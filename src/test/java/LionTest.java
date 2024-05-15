@@ -13,7 +13,7 @@ public class LionTest {
     @Test
     public void testGetFood() throws Exception {
         Feline mockFeline = mock(Feline.class);
-        when(mockFeline.getFood("Predator")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        when(mockFeline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
 
         Lion lion = new Lion("Male", mockFeline);
         List<String> foodList = lion.getFood();
