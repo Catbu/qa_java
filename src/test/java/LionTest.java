@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.example.Feline;
 import com.example.Lion;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class LionTest {
@@ -41,6 +41,14 @@ public class LionTest {
     public void testDoesHaveManeForFemaleLion() throws Exception {
         Feline mockFeline = mock(Feline.class);
         Lion lionWithoutMane = new Lion("Female", mockFeline);
+
+        assertEquals(false, lionWithoutMane.doesHaveMane());
+    }
+
+    @Test
+    public void testDoesHaveManeException() throws Exception {
+        Feline mockFeline = mock(Feline.class);
+        Lion lionWithoutMane = new Lion("NotMale", mockFeline);
 
         assertEquals(false, lionWithoutMane.doesHaveMane());
     }

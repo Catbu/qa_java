@@ -1,31 +1,51 @@
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import com.example.Cat;
+import com.example.Feline;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
-import org.junit.Test;
-import com.example.Feline;
-import com.example.Cat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CatTest {
 
-    @Test
-    public void testGetFood() throws Exception {
+    @ParameterizedTest
+    @MethodSource("foodProvider")
+    public void testGetFood(List<String> expectedFood) throws Exception {
         Feline mockFeline = mock(Feline.class);
-        when(mockFeline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-
+        when(mockFeline.eatMeat()).thenReturn(expectedFood);
 
         Cat cat = new Cat(mockFeline);
         List<String> foodList = cat.getFood();
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), foodList);
+        assertEquals(expectedFood, foodList);
     }
 
-    @Test
-    public void testGetSound() throws Exception {
+    static Stream<Arguments> foodProvider() {
+        return Stream.of(
+                Arguments.of(List.of("Животные", "Птицы", "Рыба")),
+                Arguments.of(List.of("Мясо", "Кости")),
+                Arguments.of(List.of("Насекомые", "Птицы"))
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("soundProvider")
+    public void testGetSound(String expectedSound) throws Exception {
         Feline mockFeline = mock(Feline.class);
 
         Cat cat = new Cat(mockFeline);
         String sound = cat.getSound();
-        assertEquals("Meow", sound);
+        assertEquals(expectedSound, sound);
+    }
+
+    static Stream<Arguments> soundProvider() {
+        return Stream.of(
+                Arguments.of("Meow")
+        );
     }
 }
