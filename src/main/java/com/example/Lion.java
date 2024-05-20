@@ -13,7 +13,7 @@ public class Lion {
         } else if ("Female".equals(sex)) {
             hasMane = false;
         } else {
-            throw new Exception("Используйте допустимые значения пола животного - самец или самка");
+            throw new Exception("Exception");
         }
         this.feline = feline;
     }
