@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------
+Test set: FelineTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.057 s <<< FAILURE! -- in FelineTest
+FelineTest.testEatMeat -- Time elapsed: 0.025 s <<< FAILURE!
+java.lang.AssertionError: expected:<[Р–РёРІРѕС‚РЅС‹Рµ, РџС‚РёС†С‹, Р С‹Р±Р°]> but was:<[Животные, Птицы, Рыба]>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at FelineTest.testEatMeat(FelineTest.java:15)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+
